@@ -10,8 +10,8 @@ export default defineConfig({
       entry: 'src/main.ts',
       userscript: {
         icon: 'https://vitejs.dev/logo.svg',
-        namespace: 'npm/vite-plugin-monkey',
-        match: ['https://www.google.com/'],
+        namespace: 'https://www.lxchen.dev/',
+        match: ['https://dictionary.cambridge.org/*'],
       },
       build: {
         externalGlobals: {
