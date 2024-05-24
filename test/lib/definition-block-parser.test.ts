@@ -47,9 +47,24 @@ test('test getting CEFR level', () => {
     expect(parser.getLevel()).toBe(CefrLevel.A1);
 });
 
+test('test getting empty CEFR level', () => {
+    const elementWithoutLevel = element.cloneNode(true) as HTMLElement;
+    elementWithoutLevel.querySelector('.epp-xref')?.remove();
+    const parser = new DefinitionBlock(elementWithoutLevel);
+    expect(parser.getLevel()).toBeNull();
+});
+
+
 test('test getting code', () => {
     const parser = new DefinitionBlock(element);
     expect(parser.getCode()).toBe('[ U ]');
+});
+
+test('test getting empty code', () => {
+    const elementWithoutCode = element.cloneNode(true) as HTMLElement;
+    elementWithoutCode.querySelector('.gram.dgram')?.remove();
+    const parser = new DefinitionBlock(elementWithoutCode);
+    expect(parser.getCode()).toBeNull();
 });
 
 test('test getting English definition', () => {
@@ -57,9 +72,23 @@ test('test getting English definition', () => {
     expect(parser.getEnglishDefinition()).toBe("an activity, such as a job, that a person uses physical or mental effort to do, usually for money");
 });
 
+test('test getting empty English definition', () => {
+    const elementWithoutDef = element.cloneNode(true) as HTMLElement;
+    elementWithoutDef.querySelector('.def')?.remove();
+    const parser = new DefinitionBlock(elementWithoutDef);
+    expect(parser.getEnglishDefinition()).toBeNull();
+});
+
 test('test getting zh-TW definition', () => {
     const parser = new DefinitionBlock(element);
     expect(parser.getZhTwDefinition()).toBe("工作;勞動");
+});
+
+test('test getting empty zh-TW definition', () => {
+    const elementWithoutDef = element.cloneNode(true) as HTMLElement;
+    elementWithoutDef.querySelector('.def-body .trans')?.remove();
+    const parser = new DefinitionBlock(elementWithoutDef);
+    expect(parser.getZhTwDefinition()).toBeNull();
 });
 
 
@@ -95,4 +124,11 @@ test('test get examples', () => {
             zhTwExample: "羅傑的工作需要經常出差。"
         }
     ].sort())
+});
+
+test('test get empty examples', () => {
+    const elementWithoutExamples = element.cloneNode(true) as HTMLElement;
+    elementWithoutExamples.querySelectorAll('.def-body .examp.dexamp').forEach((example) => example.remove());
+    const parser = new DefinitionBlock(elementWithoutExamples);
+    expect(parser.getExamples()).toEqual([]);
 });
