@@ -10,7 +10,7 @@ export default abstract class BaseBlock implements Definable, Examplable {
     }
 
     public getZhTwDefinition(): string | null {
-        return this.element.querySelector('.def-body .trans')?.textContent ?? null;
+        return this.element.querySelector('.def-body.ddef_b')?.querySelector(':scope > .trans')?.textContent ?? null;
     }
 
     public getExamples(): Example[] {
