@@ -3,7 +3,7 @@ import { Definable } from "./interface/definable";
 import { Example, Examplable } from "./interface/examplable";
 import { filterBoldTextFromElement } from "./parser-util";
 
-export default class DefinitionBlockParser implements Examplable, Definable {
+export default class DefinitionBlock implements Examplable, Definable {
     private element: HTMLElement;
 
     constructor(element: HTMLElement) {

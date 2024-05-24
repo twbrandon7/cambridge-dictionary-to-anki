@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { CefrLevel } from '@/lib/cefr-level';
-import DefinitionBlockParser from '@/lib/definition-block-parser';
+import DefinitionBlock from '@/lib/definition-block';
 import { createMockElement } from '../test-utils';
 
 const element = createMockElement(`<div class="def-block ddef_block " data-wl-senseid="ID_00036481_01">
@@ -43,28 +43,28 @@ const element = createMockElement(`<div class="def-block ddef_block " data-wl-se
 </div> </div></div>`);
 
 test('test getting CEFR level', () => {
-    const parser = new DefinitionBlockParser(element);
+    const parser = new DefinitionBlock(element);
     expect(parser.getLevel()).toBe(CefrLevel.A1);
 });
 
 test('test getting code', () => {
-    const parser = new DefinitionBlockParser(element);
+    const parser = new DefinitionBlock(element);
     expect(parser.getCode()).toBe('[ U ]');
 });
 
 test('test getting English definition', () => {
-    const parser = new DefinitionBlockParser(element);
+    const parser = new DefinitionBlock(element);
     expect(parser.getEnglishDefinition()).toBe("an activity, such as a job, that a person uses physical or mental effort to do, usually for money");
 });
 
 test('test getting zh-TW definition', () => {
-    const parser = new DefinitionBlockParser(element);
+    const parser = new DefinitionBlock(element);
     expect(parser.getZhTwDefinition()).toBe("工作;勞動");
 });
 
 
 test('test get examples', () => {
-    const parser = new DefinitionBlockParser(element);
+    const parser = new DefinitionBlock(element);
     expect(parser.getExamples().sort()).toEqual([
         {
             englishExample: "I've got so much work to <b>do</b>.",
