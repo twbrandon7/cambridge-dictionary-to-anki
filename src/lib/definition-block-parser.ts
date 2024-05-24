@@ -20,6 +20,13 @@ export default class DefinitionBlockParser {
         return levelStr as CefrLevel;
     }
 
+    /**
+     * @see https://dictionary.cambridge.org/zht/help/codes.html
+     */
+    public getCode(): string | null {
+        return this.element.querySelector('.gram.dgram')?.textContent ?? null;
+    }
+
     public getEnglishDefinition(): string | null {
         return this.element.querySelector('.def')?.textContent ?? null;
     }

@@ -54,6 +54,11 @@ test('test getting CEFR level', () => {
     expect(parser.getLevel()).toBe(CefrLevel.A1);
 });
 
+test('test getting code', () => {
+    const parser = new DefinitionBlockParser(element);
+    expect(parser.getCode()).toBe('[ U ]');
+});
+
 test('test getting English definition', () => {
     const parser = new DefinitionBlockParser(element);
     expect(parser.getEnglishDefinition()).toBe("an activity, such as a job, that a person uses physical or mental effort to do, usually for money");
