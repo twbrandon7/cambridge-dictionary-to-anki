@@ -1,14 +1,7 @@
 import { expect, test } from 'vitest';
 import { CefrLevel } from '@/lib/cefr-level';
 import DefinitionBlockParser from '@/lib/definition-block-parser';
-
-
-function createMockElement(html: string): HTMLElement {
-    const div = document.createElement('div');
-    div.innerHTML = html;
-    const child = div.firstElementChild;
-    return child as HTMLElement;
-}
+import { createMockElement } from '../test-utils';
 
 const element = createMockElement(`<div class="def-block ddef_block " data-wl-senseid="ID_00036481_01">
     <div class="dwl hax">
