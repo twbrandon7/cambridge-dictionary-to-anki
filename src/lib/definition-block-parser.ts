@@ -1,11 +1,8 @@
 import { CefrLevel } from "./cefr-level";
+import { Definable } from "./interface/definable";
+import { Example, Examplable } from "./interface/examplable";
 
-export interface Example {
-    englishExample: string;
-    zhTwExample: string;
-}
-
-export default class DefinitionBlockParser {
+export default class DefinitionBlockParser implements Examplable, Definable {
     private element: HTMLElement;
 
     constructor(element: HTMLElement) {
