@@ -1,6 +1,7 @@
 import { CefrLevel } from "./cefr-level";
 import { Definable } from "./interface/definable";
 import { Example, Examplable } from "./interface/examplable";
+import { filterBoldTextFromElement } from "./parser-util";
 
 export default class DefinitionBlockParser implements Examplable, Definable {
     private element: HTMLElement;
@@ -36,23 +37,10 @@ export default class DefinitionBlockParser implements Examplable, Definable {
         const exampleBlocks = this.element.querySelectorAll('.def-body .examp.dexamp');
         const examples: Example[] = [];
         exampleBlocks.forEach((exampleBlock) => {
-            const englishExample = DefinitionBlockParser.filterBoldTextFromElement(exampleBlock.querySelector('.eg') as HTMLElement);
+            const englishExample = filterBoldTextFromElement(exampleBlock.querySelector('.eg') as HTMLElement);
             const zhTwExample = exampleBlock.querySelector('.trans')?.textContent ?? '';
             examples.push({ englishExample, zhTwExample });
         });
         return examples;
-    }
-
-    private static filterBoldTextFromElement(element: HTMLElement): string {
-        let result = "";
-        element.childNodes.forEach((child: ChildNode) => {
-            // if current has class `b`, then wrap it with <b> tag
-            if (child instanceof HTMLElement && child.classList.contains('b')) {
-                result += `<b>${child.textContent}</b>`;
-            } else {
-                result += child.textContent;
-            }
-        });
-        return result;
     }
 }
