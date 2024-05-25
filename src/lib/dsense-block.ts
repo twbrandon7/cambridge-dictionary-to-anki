@@ -5,7 +5,7 @@ export default class DsenseBlock {
     constructor(protected readonly element: HTMLElement) {}
 
     public getGuideWord(): string | null {
-        return this.element.querySelector('.dsense_h .guideword')?.textContent?.replaceAll(/[\(\n\)]/g, '') ?? null;
+        return this.element.querySelector('.dsense_h .guideword')?.textContent?.replaceAll(/[\(\n\)]/g, '')?.trim() ?? null;
     }
 
     public getDefinitionBlocks(): DefinitionBlock[] {
