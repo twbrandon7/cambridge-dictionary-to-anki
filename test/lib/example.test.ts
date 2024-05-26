@@ -24,3 +24,12 @@ test('test getting parent', () => {
     const example = new Example(element, parent);
     expect(example.getParent()).toBe(parent);
 });
+
+test('test toJson', () => {
+    const parent = {} as BaseBlock;
+    const example = new Example(element, parent);
+    expect(example.toJson()).toEqual({
+        englishExample: "I've got so much work to <b>do</b>.",
+        translation: "我有一大堆工作要做。",
+    });
+});
