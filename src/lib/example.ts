@@ -1,4 +1,5 @@
 import BaseBlock from "./base-block";
+import EventBus, { OpenAnkiCardModalEvent } from "./event";
 import { filterBoldTextFromElement } from "./parser-util";
 import img from '@/assets/anki_104026.svg';
 
@@ -37,5 +38,9 @@ export default class Example {
         
         this.element.appendChild(ankiButton);
         this.element.classList.add('with-anki-button');
+
+        ankiButton.addEventListener('click', () => {
+            EventBus.getInstance().publish(new OpenAnkiCardModalEvent(this));
+        });
     }
 }
