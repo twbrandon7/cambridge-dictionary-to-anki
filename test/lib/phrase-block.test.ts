@@ -58,11 +58,13 @@ test('test get examples', () => {
     expect(examples).toEqual([
         {
             englishExample: "The bridegroom was wearing a morning suit, gloves, top hat - the works.",
-            zhTwExample: "新郎穿著晨禮服，戴著手套和高頂禮帽——全套的行頭。"
+            zhTwExample: "新郎穿著晨禮服，戴著手套和高頂禮帽——全套的行頭。",
+            parent: parser,
         },
         {
             englishExample: "And can I have two large pizzas <b>with</b> the works (= with all available types of food on top).",
-            zhTwExample: "給我來兩份全套的批薩餅吧。"
+            zhTwExample: "給我來兩份全套的批薩餅吧。",
+            parent: parser,
         }
     ]);
 });

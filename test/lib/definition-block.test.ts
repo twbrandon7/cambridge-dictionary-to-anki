@@ -98,31 +98,38 @@ test('test get examples', () => {
     expect(parser.getExamples().sort()).toEqual([
         {
             englishExample: "I've got so much work to <b>do</b>.",
-            zhTwExample: "我有一大堆工作要做。"
+            zhTwExample: "我有一大堆工作要做。",
+            parent: parser,
         },
         {
             englishExample: "Carrying heavy loads around all day is <b>hard</b> work.",
-            zhTwExample: "整天來回運送重物是件苦事。"
+            zhTwExample: "整天來回運送重物是件苦事。",
+            parent: parser,
         },
         {
             englishExample: "What time do you <b>start/finish</b> work?",
-            zhTwExample: "你甚麼時間開始／完成工作?"
+            zhTwExample: "你甚麼時間開始／完成工作?",
+            parent: parser,
         },
         {
             englishExample: "Aileen <b>does</b> most of the work around the house.",
-            zhTwExample: "愛琳做大部分的家務。"
+            zhTwExample: "愛琳做大部分的家務。",
+            parent: parser,
         },
         {
             englishExample: "What sort of work are you experienced in?",
-            zhTwExample: "你對哪一種工作有經驗？"
+            zhTwExample: "你對哪一種工作有經驗？",
+            parent: parser,
         },
         {
             englishExample: "She tends to wear quite dressy clothes for work.",
-            zhTwExample: "她總是穿得漂漂亮亮的去上班。"
+            zhTwExample: "她總是穿得漂漂亮亮的去上班。",
+            parent: parser,
         },
         {
             englishExample: "Roger's work involves a lot of travelling.",
-            zhTwExample: "羅傑的工作需要經常出差。"
+            zhTwExample: "羅傑的工作需要經常出差。",
+            parent: parser,
         }
     ].sort())
 });

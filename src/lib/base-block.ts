@@ -20,7 +20,7 @@ export default abstract class BaseBlock implements Definable, Examplable {
         exampleBlocks.forEach((exampleBlock) => {
             const englishExample = filterBoldTextFromElement(exampleBlock.querySelector('.eg') as HTMLElement);
             const zhTwExample = exampleBlock.querySelector('.trans')?.textContent ?? '';
-            examples.push({ englishExample, zhTwExample });
+            examples.push({ englishExample, zhTwExample, parent: this });
         });
         return examples;
     }
