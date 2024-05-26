@@ -1,8 +1,9 @@
 import { createApp } from 'vue';
-import './style.css';
-import img from './assets/anki_104026.svg';
 import App from './App.vue';
 import Initializer from './lib/initializer';
+
+import './style.css';
+import './style/bootstrap.scss';
 
 createApp(App).mount(
   (() => {
