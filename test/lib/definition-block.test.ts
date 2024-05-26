@@ -3,6 +3,7 @@ import { CefrLevel } from '@/lib/cefr-level';
 import DefinitionBlock from '@/lib/definition-block';
 import { createMockElement } from '../test-utils';
 import DsenseBlock from '@/lib/dsense-block';
+import Example from '@/lib/example';
 
 const element = createMockElement(`<div class="def-block ddef_block " data-wl-senseid="ID_00036481_01">
     <div class="dwl hax">
@@ -95,41 +96,35 @@ test('test getting empty zh-TW definition', () => {
 
 test('test get examples', () => {
     const parser = new DefinitionBlock(element, {} as DsenseBlock);
-    expect(parser.getExamples().sort()).toEqual([
+    const examples = parser.getExamples().map((example: Example) => example.toJson());
+    expect(examples.sort()).toEqual([
         {
             englishExample: "I've got so much work to <b>do</b>.",
-            zhTwExample: "我有一大堆工作要做。",
-            parent: parser,
+            translation: "我有一大堆工作要做。",
         },
         {
             englishExample: "Carrying heavy loads around all day is <b>hard</b> work.",
-            zhTwExample: "整天來回運送重物是件苦事。",
-            parent: parser,
+            translation: "整天來回運送重物是件苦事。",
         },
         {
             englishExample: "What time do you <b>start/finish</b> work?",
-            zhTwExample: "你甚麼時間開始／完成工作?",
-            parent: parser,
+            translation: "你甚麼時間開始／完成工作?",
         },
         {
             englishExample: "Aileen <b>does</b> most of the work around the house.",
-            zhTwExample: "愛琳做大部分的家務。",
-            parent: parser,
+            translation: "愛琳做大部分的家務。",
         },
         {
             englishExample: "What sort of work are you experienced in?",
-            zhTwExample: "你對哪一種工作有經驗？",
-            parent: parser,
+            translation: "你對哪一種工作有經驗？",
         },
         {
             englishExample: "She tends to wear quite dressy clothes for work.",
-            zhTwExample: "她總是穿得漂漂亮亮的去上班。",
-            parent: parser,
+            translation: "她總是穿得漂漂亮亮的去上班。",
         },
         {
             englishExample: "Roger's work involves a lot of travelling.",
-            zhTwExample: "羅傑的工作需要經常出差。",
-            parent: parser,
+            translation: "羅傑的工作需要經常出差。",
         }
     ].sort())
 });

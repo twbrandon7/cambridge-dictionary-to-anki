@@ -2,6 +2,7 @@ import { expect, test } from 'vitest';
 import PhraseBlock from '@/lib/phrase-block';
 import { createMockElement } from '../test-utils';
 import DsenseBlock from '@/lib/dsense-block';
+import Example from '@/lib/example';
 
 const element = createMockElement(`<div class="pr phrase-block dphrase-block "><div class="cid" id="caldcnt-1-5-1"></div><div class="phrase-head dphrase_h"><i class="i i-caret-right dtrans fs18 lpb-4" aria-hidden="true">&nbsp;</i><span class="phrase-title dphrase-title"><b>the works</b></span> <span class="phrase-info dphrase-info"><span class="lab dlab"><span class="usage dusage lpl-10">informal</span></span></span></div><div class="phrase-body dphrase_b"><div class="def-block ddef_block " data-wl-senseid="ID_00036481_05">
 <div class="dwl hax">
@@ -54,17 +55,15 @@ test('test getting empty zh-TW definition', () => {
 
 test('test get examples', () => {
     const parser = new PhraseBlock(element, {} as DsenseBlock);
-    const examples = parser.getExamples();
+    const examples = parser.getExamples().map((example: Example) => example.toJson());
     expect(examples).toEqual([
         {
             englishExample: "The bridegroom was wearing a morning suit, gloves, top hat - the works.",
-            zhTwExample: "新郎穿著晨禮服，戴著手套和高頂禮帽——全套的行頭。",
-            parent: parser,
+            translation: "新郎穿著晨禮服，戴著手套和高頂禮帽——全套的行頭。",
         },
         {
             englishExample: "And can I have two large pizzas <b>with</b> the works (= with all available types of food on top).",
-            zhTwExample: "給我來兩份全套的批薩餅吧。",
-            parent: parser,
+            translation: "給我來兩份全套的批薩餅吧。",
         }
     ]);
 });

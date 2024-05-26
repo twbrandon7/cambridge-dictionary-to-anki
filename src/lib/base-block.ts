@@ -1,6 +1,7 @@
 import DsenseBlock from "./dsense-block";
+import Example from "./example";
 import { Definable } from "./interface/definable";
-import { Example, Examplable } from "./interface/examplable";
+import { Examplable } from "./interface/examplable";
 import { filterBoldTextFromElement } from "./parser-util";
 
 export default abstract class BaseBlock implements Definable, Examplable {
@@ -16,13 +17,9 @@ export default abstract class BaseBlock implements Definable, Examplable {
 
     public getExamples(): Example[] {
         const exampleBlocks = this.element.querySelectorAll('.def-body .examp.dexamp');
-        const examples: Example[] = [];
-        exampleBlocks.forEach((exampleBlock) => {
-            const englishExample = filterBoldTextFromElement(exampleBlock.querySelector('.eg') as HTMLElement);
-            const zhTwExample = exampleBlock.querySelector('.trans')?.textContent ?? '';
-            examples.push({ englishExample, zhTwExample, parent: this });
+        return Array.from(exampleBlocks).map((element: Element) => {
+            return new Example(element as HTMLElement, this);
         });
-        return examples;
     }
 
     public getParent(): DsenseBlock {
