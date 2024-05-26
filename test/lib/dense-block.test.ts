@@ -1,6 +1,7 @@
 import { expect, test } from 'vitest';
 import DsenseBlock from '@/lib/dsense-block';
 import { createMockElement } from '../test-utils';
+import EntryBody from '@/lib/entry-body';
 
 const elementDefBlock = createMockElement(`<div class="pr dsense "><div class="cid" id="caldcnt-1-1"></div> <h3 class="dsense_h"><span class="hw dsense_hw">work</span> <span class="pos dsense_pos" title="A word that refers to a person, place, idea, event or thing.">noun</span> <span class="guideword dsense_gw" title="Guide word: helps you find the right meaning when a word has more than one meaning">
 (<span>ACTIVITY</span>)
@@ -86,13 +87,13 @@ iaw.addPageCriteria("cdo_abt", "1");
 <div id="google_ads_iframe_/2863368/ringlinkslot_0__container__" style="border: 0pt none; width: 300px; height: 0px;"></div></div>
        </div>`);
 
-test('test get guide word', () => {
-    const denseBlock = new DsenseBlock(elementDefBlock);
+test('test get guide word from dsense block containing only definition blocks', () => {
+    const denseBlock = new DsenseBlock(elementDefBlock, {} as EntryBody);
     expect(denseBlock.getGuideWord()).toBe('ACTIVITY');
 });
 
 test('test get definition blocks from dsense block containing only definition blocks', () => {
-    const denseBlock = new DsenseBlock(elementDefBlock);
+    const denseBlock = new DsenseBlock(elementDefBlock, {} as EntryBody);
     const definitionBlocks = denseBlock.getDefinitionBlocks();
     expect(definitionBlocks.length).toBe(2);
     expect(definitionBlocks[0].getEnglishDefinition()).toBe('an activity, such as a job, that a person uses physical or mental effort to do, usually for money');
@@ -100,7 +101,7 @@ test('test get definition blocks from dsense block containing only definition bl
 });
 
 test('test get phrase blocks from dsense block containing only definition blocks', () => {
-    const denseBlock = new DsenseBlock(elementDefBlock);
+    const denseBlock = new DsenseBlock(elementDefBlock, {} as EntryBody);
     const phraseBlocks = denseBlock.getPhraseBlocks();
     expect(phraseBlocks.length).toBe(0);
 });
@@ -133,20 +134,26 @@ const elementPhraseBlock = createMockElement(`<div class="pr dsense "><div class
 </div></div></div>           
    </div>`);
 
-test('test get guide word', () => {
-    const denseBlock = new DsenseBlock(elementPhraseBlock);
+test('test get guide word from dsense block containing only phrase blocks', () => {
+    const denseBlock = new DsenseBlock(elementPhraseBlock, {} as EntryBody);
     expect(denseBlock.getGuideWord()).toBe('EVERYTHING');
 });
 
 test('test get definition blocks from dsense block containing only phrase blocks', () => {
-    const denseBlock = new DsenseBlock(elementPhraseBlock);
+    const denseBlock = new DsenseBlock(elementPhraseBlock, {} as EntryBody);
     const definitionBlocks = denseBlock.getDefinitionBlocks();
     expect(definitionBlocks.length).toBe(0);
 });
 
 test('test get phrase blocks from dsense block containing only phrase blocks', () => {
-    const denseBlock = new DsenseBlock(elementPhraseBlock);
+    const denseBlock = new DsenseBlock(elementPhraseBlock, {} as EntryBody);
     const phraseBlocks = denseBlock.getPhraseBlocks();
     expect(phraseBlocks.length).toBe(1);
     expect(phraseBlocks[0].getEnglishDefinition()).toBe('everything that you might want or expect to find in a particular situation');
+});
+
+test('test getting parent', () => {
+    const entryBody = {} as EntryBody;
+    const denseBlock = new DsenseBlock(createMockElement(''), entryBody);
+    expect(denseBlock.getParent()).toBe(entryBody);
 });

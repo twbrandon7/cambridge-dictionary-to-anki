@@ -15,6 +15,6 @@ export default class EntryBody {
 
     public getDsenseBlocks(): DsenseBlock[] {
         const dsenseBlocks = this.element.querySelector('.pos-body')?.querySelectorAll(':scope > .dsense') ?? [];
-        return Array.from(dsenseBlocks)?.map((element: Element) => new DsenseBlock(element as HTMLElement));
+        return Array.from(dsenseBlocks)?.map((element: Element) => new DsenseBlock(element as HTMLElement, this));
     }
 }
