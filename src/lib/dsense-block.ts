@@ -11,12 +11,12 @@ export default class DsenseBlock {
 
     public getDefinitionBlocks(): DefinitionBlock[] {
         const definitionBlocks = this.element.querySelector('.sense-body.dsense_b')?.querySelectorAll(':scope > .def-block') ?? [];
-        return Array.from(definitionBlocks).map((definitionBlock: Element) => new DefinitionBlock(definitionBlock as HTMLElement));
+        return Array.from(definitionBlocks).map((definitionBlock: Element) => new DefinitionBlock(definitionBlock as HTMLElement, this));
     }
 
     public getPhraseBlocks(): PhraseBlock[] {
         const definitionBlocks = this.element.querySelector('.sense-body.dsense_b')?.querySelectorAll(':scope > .phrase-block') ?? [];
-        return Array.from(definitionBlocks).map((definitionBlock: Element) => new DefinitionBlock(definitionBlock as HTMLElement));
+        return Array.from(definitionBlocks).map((definitionBlock: Element) => new DefinitionBlock(definitionBlock as HTMLElement, this));
     }
 
     public getParent(): EntryBody {

@@ -1,9 +1,10 @@
+import DsenseBlock from "./dsense-block";
 import { Definable } from "./interface/definable";
 import { Example, Examplable } from "./interface/examplable";
 import { filterBoldTextFromElement } from "./parser-util";
 
 export default abstract class BaseBlock implements Definable, Examplable {
-    constructor (protected readonly element: HTMLElement) {}
+    constructor (protected readonly element: HTMLElement, protected readonly parent: DsenseBlock) {}
     
     public getEnglishDefinition(): string | null {
         return this.element.querySelector('.def')?.textContent ?? null;
@@ -22,5 +23,9 @@ export default abstract class BaseBlock implements Definable, Examplable {
             examples.push({ englishExample, zhTwExample });
         });
         return examples;
+    }
+
+    public getParent(): DsenseBlock {
+        return this.parent;
     }
 }

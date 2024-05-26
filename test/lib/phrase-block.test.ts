@@ -1,6 +1,7 @@
 import { expect, test } from 'vitest';
 import PhraseBlock from '@/lib/phrase-block';
 import { createMockElement } from '../test-utils';
+import DsenseBlock from '@/lib/dsense-block';
 
 const element = createMockElement(`<div class="pr phrase-block dphrase-block "><div class="cid" id="caldcnt-1-5-1"></div><div class="phrase-head dphrase_h"><i class="i i-caret-right dtrans fs18 lpb-4" aria-hidden="true">&nbsp;</i><span class="phrase-title dphrase-title"><b>the works</b></span> <span class="phrase-info dphrase-info"><span class="lab dlab"><span class="usage dusage lpl-10">informal</span></span></span></div><div class="phrase-body dphrase_b"><div class="def-block ddef_block " data-wl-senseid="ID_00036481_05">
 <div class="dwl hax">
@@ -28,31 +29,31 @@ const element = createMockElement(`<div class="pr phrase-block dphrase-block "><
 </div></div>`);
 
 test('test getting English definition', () => {
-    const parser = new PhraseBlock(element);
+    const parser = new PhraseBlock(element, {} as DsenseBlock);
     expect(parser.getEnglishDefinition()).toBe("everything that you might want or expect to find in a particular situation");
 });
 
 test('test getting empty English definition', () => {
     const elementWithoutDef = element.cloneNode(true) as HTMLElement;
     elementWithoutDef.querySelector('.def')?.remove();
-    const parser = new PhraseBlock(elementWithoutDef);
+    const parser = new PhraseBlock(elementWithoutDef, {} as DsenseBlock);
     expect(parser.getEnglishDefinition()).toBeNull();
 });
 
 test('test getting zh-TW definition', () => {
-    const parser = new PhraseBlock(element);
+    const parser = new PhraseBlock(element, {} as DsenseBlock);
     expect(parser.getZhTwDefinition()).toBe("全套物品");
 });
 
 test('test getting empty zh-TW definition', () => {
     const elementWithoutDef = element.cloneNode(true) as HTMLElement;
     elementWithoutDef.querySelector('.def-body .trans')?.remove();
-    const parser = new PhraseBlock(elementWithoutDef);
+    const parser = new PhraseBlock(elementWithoutDef, {} as DsenseBlock);
     expect(parser.getZhTwDefinition()).toBeNull();
 });
 
 test('test get examples', () => {
-    const parser = new PhraseBlock(element);
+    const parser = new PhraseBlock(element, {} as DsenseBlock);
     const examples = parser.getExamples();
     expect(examples).toEqual([
         {
@@ -69,6 +70,12 @@ test('test get examples', () => {
 test('test get empty examples', () => {
     const elementWithoutExamples = element.cloneNode(true) as HTMLElement;
     elementWithoutExamples.querySelectorAll('.examp').forEach((example) => example.remove());
-    const parser = new PhraseBlock(elementWithoutExamples);
+    const parser = new PhraseBlock(elementWithoutExamples, {} as DsenseBlock);
     expect(parser.getExamples()).toEqual([]);
+});
+
+test('test get parent', () => {
+    const parent = {} as DsenseBlock;
+    const parser = new PhraseBlock(element, parent);
+    expect(parser.getParent()).toBe(parent);
 });

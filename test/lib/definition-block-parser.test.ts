@@ -2,6 +2,7 @@ import { expect, test } from 'vitest';
 import { CefrLevel } from '@/lib/cefr-level';
 import DefinitionBlock from '@/lib/definition-block';
 import { createMockElement } from '../test-utils';
+import DsenseBlock from '@/lib/dsense-block';
 
 const element = createMockElement(`<div class="def-block ddef_block " data-wl-senseid="ID_00036481_01">
     <div class="dwl hax">
@@ -43,57 +44,57 @@ const element = createMockElement(`<div class="def-block ddef_block " data-wl-se
 </div> </div></div>`);
 
 test('test getting CEFR level', () => {
-    const parser = new DefinitionBlock(element);
+    const parser = new DefinitionBlock(element, {} as DsenseBlock);
     expect(parser.getLevel()).toBe(CefrLevel.A1);
 });
 
 test('test getting empty CEFR level', () => {
     const elementWithoutLevel = element.cloneNode(true) as HTMLElement;
     elementWithoutLevel.querySelector('.epp-xref')?.remove();
-    const parser = new DefinitionBlock(elementWithoutLevel);
+    const parser = new DefinitionBlock(elementWithoutLevel, {} as DsenseBlock);
     expect(parser.getLevel()).toBeNull();
 });
 
 
 test('test getting code', () => {
-    const parser = new DefinitionBlock(element);
+    const parser = new DefinitionBlock(element, {} as DsenseBlock);
     expect(parser.getCode()).toBe('[ U ]');
 });
 
 test('test getting empty code', () => {
     const elementWithoutCode = element.cloneNode(true) as HTMLElement;
     elementWithoutCode.querySelector('.gram.dgram')?.remove();
-    const parser = new DefinitionBlock(elementWithoutCode);
+    const parser = new DefinitionBlock(elementWithoutCode, {} as DsenseBlock);
     expect(parser.getCode()).toBeNull();
 });
 
 test('test getting English definition', () => {
-    const parser = new DefinitionBlock(element);
+    const parser = new DefinitionBlock(element, {} as DsenseBlock);
     expect(parser.getEnglishDefinition()).toBe("an activity, such as a job, that a person uses physical or mental effort to do, usually for money");
 });
 
 test('test getting empty English definition', () => {
     const elementWithoutDef = element.cloneNode(true) as HTMLElement;
     elementWithoutDef.querySelector('.def')?.remove();
-    const parser = new DefinitionBlock(elementWithoutDef);
+    const parser = new DefinitionBlock(elementWithoutDef, {} as DsenseBlock);
     expect(parser.getEnglishDefinition()).toBeNull();
 });
 
 test('test getting zh-TW definition', () => {
-    const parser = new DefinitionBlock(element);
+    const parser = new DefinitionBlock(element, {} as DsenseBlock);
     expect(parser.getZhTwDefinition()).toBe("工作;勞動");
 });
 
 test('test getting empty zh-TW definition', () => {
     const elementWithoutDef = element.cloneNode(true) as HTMLElement;
     elementWithoutDef.querySelector('.def-body .trans')?.remove();
-    const parser = new DefinitionBlock(elementWithoutDef);
+    const parser = new DefinitionBlock(elementWithoutDef, {} as DsenseBlock);
     expect(parser.getZhTwDefinition()).toBeNull();
 });
 
 
 test('test get examples', () => {
-    const parser = new DefinitionBlock(element);
+    const parser = new DefinitionBlock(element, {} as DsenseBlock);
     expect(parser.getExamples().sort()).toEqual([
         {
             englishExample: "I've got so much work to <b>do</b>.",
@@ -129,6 +130,12 @@ test('test get examples', () => {
 test('test get empty examples', () => {
     const elementWithoutExamples = element.cloneNode(true) as HTMLElement;
     elementWithoutExamples.querySelectorAll('.def-body .examp.dexamp').forEach((example) => example.remove());
-    const parser = new DefinitionBlock(elementWithoutExamples);
+    const parser = new DefinitionBlock(elementWithoutExamples, {} as DsenseBlock);
     expect(parser.getExamples()).toEqual([]);
+});
+
+test('test get parent', () => {
+    const parent = {} as DsenseBlock;
+    const parser = new DefinitionBlock(element, parent);
+    expect(parser.getParent()).toBe(parent);
 });
