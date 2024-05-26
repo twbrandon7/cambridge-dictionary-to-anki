@@ -20,4 +20,8 @@ export default class Example {
             translation: this.getExampleTranslation(),
         };
     }
+
+    public getParent() {
+        return this.parent;
+    }
 }
