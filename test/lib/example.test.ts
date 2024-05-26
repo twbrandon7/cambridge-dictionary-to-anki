@@ -33,3 +33,14 @@ test('test toJson', () => {
         translation: "我有一大堆工作要做。",
     });
 });
+
+test('test injecting Anki button', () => {
+    const parent = {} as BaseBlock;
+    const elementCopy = element.cloneNode(true) as HTMLElement;
+    const example = new Example(elementCopy, parent);
+    example.injectAnkiButton();
+    const classList = Array.from(elementCopy.classList);
+    expect(classList.indexOf('with-anki-button') >= 0).toBe(true);
+    const ankiButton = elementCopy.querySelector(':scope > .anki-button');
+    expect(ankiButton).not.toBe(null);
+});

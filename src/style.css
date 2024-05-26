@@ -1,0 +1,15 @@
+.with-anki-button {
+    padding-left: 24px !important;
+    position: relative;
+}
+
+.with-anki-button::before {
+    content: "" !important;
+}
+
+.with-anki-button .anki-button {
+    width: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}

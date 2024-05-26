@@ -1,5 +1,6 @@
 import BaseBlock from "./base-block";
 import { filterBoldTextFromElement } from "./parser-util";
+import img from '@/assets/anki_104026.svg';
 
 export default class Example {
     constructor(protected readonly element: HTMLElement, protected readonly parent: BaseBlock) {}
@@ -23,5 +24,13 @@ export default class Example {
 
     public getParent() {
         return this.parent;
+    }
+
+    public injectAnkiButton() {
+        const ankiButton = document.createElement('img');
+        ankiButton.src = img;
+        ankiButton.classList.add('anki-button');
+        this.element.appendChild(ankiButton);
+        this.element.classList.add('with-anki-button');
     }
 }
