@@ -12,4 +12,18 @@
     position: absolute;
     left: 0;
     top: 0;
+
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+}
+
+.anki-button img {
+    display: block;
+    width: 100%;
+    height: auto;
 }

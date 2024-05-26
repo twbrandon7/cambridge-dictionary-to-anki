@@ -27,9 +27,14 @@ export default class Example {
     }
 
     public injectAnkiButton() {
-        const ankiButton = document.createElement('img');
-        ankiButton.src = img;
+        const ankiButton = document.createElement('button');
+        ankiButton.type = 'button';
         ankiButton.classList.add('anki-button');
+
+        const image = document.createElement('img');
+        image.src = img;
+        ankiButton.appendChild(image);
+        
         this.element.appendChild(ankiButton);
         this.element.classList.add('with-anki-button');
     }
