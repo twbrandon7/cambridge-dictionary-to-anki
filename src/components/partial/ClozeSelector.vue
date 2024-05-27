@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import Tokenizer, {Token} from '@/lib/tokenizer';
-import {defineProps, onMounted, ref, watch} from 'vue';
+import Tokenizer, { Token, TokenData } from '@/lib/tokenizer';
+import { defineProps, onMounted, ref, watch } from 'vue';
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
     targetWord: string;
     sentence: string;
-}>();
+    value: Token[];
+}>(), {
+    value: () => [],
+});
 
 const tokens = ref<Array<Token>>([]);
 const generateTokens = () => {
@@ -25,14 +28,21 @@ onMounted(() => {
 watch(() => props.sentence, () => {
     tokens.value = generateTokens();
 });
+
+const emit = defineEmits<{
+    'update:modelValue': [value: TokenData[]];
+}>();
+
+watch(() => tokens.value, () => {
+    emit('update:modelValue', tokens.value.map(token => token.getData()));
+});
 </script>
 
 <template>
     <template v-for="token of tokens">
-        <button v-if="token.isWord()"
-                type="button"
-                :class="{'reset-button': true, 'candidate-word': true, 'selected-word': token.isSelected()}"
-                @click="token.toggleSelect()">{{ token.getValue() }}</button>
+        <button v-if="token.isWord()" type="button"
+            :class="{ 'reset-button': true, 'candidate-word': true, 'selected-word': token.isSelected() }"
+            @click="token.toggleSelect()">{{ token.getValue() }}</button>
         <span v-else-if="!token.isHtmlTag()">{{ token.getValue() }}</span>
     </template>
 </template>

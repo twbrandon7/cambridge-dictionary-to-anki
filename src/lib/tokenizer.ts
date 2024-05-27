@@ -1,3 +1,10 @@
+export interface TokenData {
+  value: string;
+  selected: boolean;
+  isWord: boolean;
+  isHtmlTag: boolean;
+}
+
 export class Token {
   protected selected: boolean = false;
 
@@ -26,6 +33,15 @@ export class Token {
 
   public getValue(): string {
       return this.htmlStart ?? this.htmlEnd ?? this.word ?? this.notWord ?? '';
+  }
+
+  public getData(): TokenData {
+      return {
+          value: this.getValue(),
+          selected: this.selected,
+          isWord: this.isWord(),
+          isHtmlTag: this.isHtmlTag(),
+      };
   }
 }
 

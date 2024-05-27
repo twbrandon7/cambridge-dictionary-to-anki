@@ -3,6 +3,7 @@ import { ref, onMounted, watch, defineEmits } from 'vue';
 import { Modal } from 'bootstrap';
 import { CardInformation } from '@/lib/information-collector';
 import ClozeSelector from '@/components/partial/ClozeSelector.vue';
+import { TokenData } from '@/lib/tokenizer';
 
 const props = defineProps<{
   show: boolean;
@@ -34,6 +35,10 @@ watch(() => props.show, (show) => {
   }
 });
 
+const tokens = ref<Array<TokenData>>([]);
+const debug = () => {
+  console.log(JSON.parse(JSON.stringify(tokens.value)));
+};
 </script>
 
 <template>
@@ -46,7 +51,7 @@ watch(() => props.show, (show) => {
         </div>
         <div class="modal-body">
           <template v-if="info">
-            <cloze-selector :target-word="info.word" :sentence="info.englishExample"></cloze-selector>
+            <cloze-selector :target-word="info.word" :sentence="info.englishExample" v-model="tokens"></cloze-selector>
             <div class="example-translation"> {{ info.exampleTranslation }} </div>
             <hr />
             <div class="word-head">
@@ -70,7 +75,7 @@ watch(() => props.show, (show) => {
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Close
           </button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" @click="debug">Save changes</button>
         </div>
       </div>
     </div>
