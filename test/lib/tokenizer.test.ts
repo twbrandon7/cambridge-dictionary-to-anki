@@ -21,3 +21,17 @@ test('test tokenizer with sentence in the dictionary', () => {
     const result = Tokenizer.tokenize(input);
     expect(result).toEqual(expected);
 });
+
+test('test not ending by punctuation', () => {
+    const input = "the economic/political situation";
+    const expected = ["the", " ", "economic", "/", "political", " ", "situation"];
+    const result = Tokenizer.tokenize(input);
+    expect(result).toEqual(expected);
+});
+
+test('test empty string', () => {
+    const input = "";
+    const expected: string[] = [];
+    const result = Tokenizer.tokenize(input);
+    expect(result).toEqual(expected);
+});
