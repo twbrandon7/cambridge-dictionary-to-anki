@@ -356,3 +356,130 @@ test('test getting dsense blocks', () => {
     expect(dsenseBlocks[6].getGuideWord()).toBe('MACHINE');
     expect(dsenseBlocks[7].getGuideWord()).toBe('PHYSICS');
 });
+
+const elementWithCode = createMockElement(`<div class="entry-body"> <div class="pr entry-body__el"><div class="cid" id="caldcnt-1"></div><div class="pos-header dpos-h"><div class="di-title"><span class="headword hdb tw-bw dhw dpos-h_hw "><span class="hw dhw">situation</span></span></div><div class="posgram dpos-g hdib lmr-5"><span class="pos dpos" title="A word that refers to a person, place, idea, event or thing.">noun</span> <span class="gram dgram"><a href="/help/codes.html">[ <span class="gc dgc">C</span> ]</a></span></div> <div></div><span class="uk dpron-i "><span class="region dreg">uk</span><span class="daud">                    
+<audio class="hdn" preload="none" id="audio1" controlslist="nodownload">
+    <div class="hdib" fallback="">
+        <p>Your browser doesn't support HTML5 audio</p>
+    </div>
+    <source type="audio/mpeg" src="/media/english-chinese-traditional/uk_pron/u/uks/uksit/uksitua002.mp3">
+    <source type="audio/ogg" src="/media/english-chinese-traditional/uk_pron_ogg/u/uks/uksit/uksitua002.ogg">
+</audio>
+<div title="Listen to the British English pronunciation" class="i i-volume-up c_aud htc hdib hp hv-1 fon tcu tc-bd lmr-10 lpt-3 fs20 hv-3" onclick="audio1.load(); audio1.play();" role="button" tabindex="0"></div>
+</span><span class="pron dpron">/<span class="ipa dipa lpr-2 lpl-1">ˌsɪtʃ.uˈeɪ.ʃ<span class="sp dsp">ə</span>n</span>/</span></span> <span class="us dpron-i "><span class="region dreg">us</span><span class="daud">                    
+<audio class="hdn" preload="none" id="audio2" controlslist="nodownload">
+    <div class="hdib" fallback="">
+        <p>Your browser doesn't support HTML5 audio</p>
+    </div>
+    <source type="audio/mpeg" src="/media/english-chinese-traditional/us_pron/s/sit/situa/situation.mp3">
+    <source type="audio/ogg" src="/media/english-chinese-traditional/us_pron_ogg/s/sit/situa/situation.ogg">
+</audio>
+<div title="Listen to the American English pronunciation" class="i i-volume-up c_aud htc hdib hp hv-1 fon tcu tc-bd lmr-10 lpt-3 fs20 hv-3" onclick="audio2.load(); audio2.play();" role="button" tabindex="0"></div>
+</span><span class="pron dpron">/<span class="ipa dipa lpr-2 lpl-1">ˌsɪtʃ.uˈeɪ.ʃ<span class="sp dsp">ə</span>n</span>/</span></span></div><div class="pos-body">
+
+                            <div class="pr dsense dsense-noh"><div class="cid" id="caldcnt-1-1"></div> <div class="sense-body dsense_b"><div class="def-block ddef_block " data-wl-senseid="ID_00029634_01">
+                    <div class="dwl hax">
+                        
+     
+    <a amp-access="loggedIn" class="dwla wordlist-add-button" title="Add this meaning to a word list" on="tap:AMP.setState({ stateGlobal: { wlSenseId: 'ID_00029634_01', wotd: 'situation' } }), sidebarWordList.open">
+        <span class="tb fs10 hvm">Add to word list</span>
+        <i class="i i-list-ul" aria-hidden="true"></i>
+    </a>
+    <a amp-access="NOT loggedIn" class="dwla wordlist-add-button" title="Add this meaning to a word list" on="tap:amp-access.login-sign-in" amp-access-hide="">
+        <span class="tb fs10 hvm">Add to word list</span>
+        <i class="i i-list-ul" aria-hidden="true"></i>
+    </a>
+    </div>
+            <div class="ddef_h"><span class="def-info ddef-info"><span class="epp-xref dxref B1">B1</span> </span><div class="def ddef_d db">the set of things that are <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/happening" title="happening" rel="">happening</a> and the <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/condition" title="conditions" rel="">conditions</a> that <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/exist" title="exist" rel="">exist</a> at a <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/particular" title="particular" rel="">particular</a> <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/time" title="time" rel="">time</a> and <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/place" title="place" rel="">place</a></div> </div><div class="def-body ddef_b">  
+                             
+    <span class="trans dtrans dtrans-se  break-cj" lang="zh-Hant">處境，情況，形勢</span>
+        <div class="examp dexamp with-anki-button"> <span class="eg deg">the <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/economic" title="economic" rel="">economic</a>/<a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/political" title="political" rel="">political</a> situation</span>  
+                             
+    <span class="trans dtrans dtrans-se hdb break-cj" lang="zh-Hant">經濟／政治形勢</span>
+        <button type="button" class="anki-button"><img src="http://127.0.0.1:5173/src/assets/anki_104026.svg"></button></div><div class="examp dexamp with-anki-button"> <span class="eg deg">Her <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/news" title="news" rel="">news</a> put me <span class="b db">in</span> a <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/difficult" title="difficult" rel="">difficult</a> situation.</span>  
+                             
+    <span class="trans dtrans dtrans-se hdb break-cj" lang="zh-Hant">她的消息讓我陷入困境。</span>
+        <button type="button" class="anki-button"><img src="http://127.0.0.1:5173/src/assets/anki_104026.svg"></button></div><div class="examp dexamp with-anki-button"> <span class="eg deg">"Would you get <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/involved" title="involved" rel="">involved</a> in a <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/fight" title="fight" rel="">fight</a>?" "It would <span class="b db"><a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/depend" title="depend" rel="">depend</a> on the</span> situation."</span>  
+                             
+    <span class="trans dtrans dtrans-se hdb break-cj" lang="zh-Hant">「你會和別人打架嗎?」 「這要看情況。」</span>
+        <button type="button" class="anki-button"><img src="http://127.0.0.1:5173/src/assets/anki_104026.svg"></button></div><div class="examp dexamp with-anki-button"> <span class="eg deg">I'll <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/worry" title="worry" rel="">worry</a> about it <span class="b db">if/when/as</span> the situation <span class="b db"><a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/arise" title="arises" rel="">arises</a></span> <span class="gloss dgloss">(= if/when/as it <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/happen" title="happens" rel="">happens</a>)</span>.</span>  
+                             
+    <span class="trans dtrans dtrans-se hdb break-cj" lang="zh-Hant">如果這種情況發生/這種情況發生時，我會擔憂的。</span>
+        <button type="button" class="anki-button"><img src="http://127.0.0.1:5173/src/assets/anki_104026.svg"></button></div> </div></div>                                 
+     <div class="def-block ddef_block " data-wl-senseid="ID_00029634_02">
+                    <div class="dwl hax">
+                        
+     
+    <a amp-access="loggedIn" class="dwla wordlist-add-button" title="Add this meaning to a word list" on="tap:AMP.setState({ stateGlobal: { wlSenseId: 'ID_00029634_02', wotd: 'situation' } }), sidebarWordList.open">
+        <i class="i i-plus" aria-hidden="true"></i>
+        <i class="i i-list-ul" aria-hidden="true"></i>
+    </a>
+    <a amp-access="NOT loggedIn" class="dwla wordlist-add-button" title="Add this meaning to a word list" on="tap:amp-access.login-sign-in" amp-access-hide="">
+        <i class="i i-plus" aria-hidden="true"></i>
+        <i class="i i-list-ul" aria-hidden="true"></i>
+    </a>
+    </div>
+            <div class="ddef_h"><span class="def-info ddef-info">  <span class="lab dlab"><span class="usage dusage lpl-10">old use</span></span></span> <div class="def ddef_d db">a <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/job" title="job" rel="">job</a></div> </div><div class="def-body ddef_b">  
+                             
+    <span class="trans dtrans dtrans-se  break-cj" lang="zh-Hant"><a class="Ref" href="/dictionary/chinese-traditional-english/%E5%B7%A5%E4%BD%9C"><span class="dtrans">工作</span></a></span>
+        <div class="examp dexamp with-anki-button"> <span class="eg deg">My <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/sister" title="sister" rel="">sister</a> has a good situation <span class="b db">as</span> a <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/teacher" title="teacher" rel="">teacher</a> in the <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/local" title="local" rel="">local</a> <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/school" title="school" rel="">school</a>.</span>  
+                             
+    <span class="trans dtrans dtrans-se hdb break-cj" lang="zh-Hant">我姐姐有一份好工作，在當地學校當老師。</span>
+        <button type="button" class="anki-button"><img src="http://127.0.0.1:5173/src/assets/anki_104026.svg"></button></div> <div class="xref synonyms hax dxref-w lmt-25"><strong class="xref-title dxref-t">Synonyms</strong><div class="lcs lmt-10 lmb-20">
+
+            <div class="item lc lc1 lpb-10 lpr-10" data-position="1"><a href="/dictionary/english-chinese-traditional/appointment" title="meaning of appointment" rel=""><span class="x-h dx-h">appointment</span> <span class="x-num dx-num">(JOB)</span></a></div>
+
+            <div class="item lc lc1 lpb-10 lpr-10" data-position="2"><a href="/dictionary/english-chinese-traditional/job" title="meaning of job" rel=""><span class="x-h dx-h">job</span> <span class="x-num dx-num">(EMPLOYMENT)</span></a></div>
+
+            <div class="item lc lc1 lpb-10 lpr-10" data-position="3"><a href="/dictionary/english-chinese-traditional/position" title="meaning of position" rel=""><span class="x-h dx-h">position</span>  <span class="x-num dx-num">(RANK)</span></a></div>
+
+            <div class="item lc lc1 lpb-10 lpr-10" data-position="4"><a href="/dictionary/english-chinese-traditional/post" title="meaning of post" rel=""><span class="x-h dx-h">post</span>  <span class="x-num dx-num">(JOB)</span></a></div></div></div><div class="xref compare hax dxref-w "><strong class="xref-title dxref-t">Compare</strong><div class="lcs lmt-10 lmb-20">
+
+            <div class="item lc lc1 lpb-10 lpr-10" data-position="1"><a href="/dictionary/english-chinese-traditional/employment" title="meaning of employment"><span class="x-h dx-h">employment</span> <span class="x-num dx-num">(WORK)</span></a></div>
+
+            <div class="item lc lc1 lpb-10 lpr-10" data-position="2"><a href="/dictionary/english-chinese-traditional/work" title="meaning of work"><span class="x-h dx-h">work</span> <span class="x-pos dx-pos">noun</span> <span class="x-num dx-num">(ACTIVITY)</span></a></div></div></div> </div></div>     
+     <div class="def-block ddef_block " data-wl-senseid="ID_00029634_03">
+                    <div class="dwl hax">
+                        
+     
+    <a amp-access="loggedIn" class="dwla wordlist-add-button" title="Add this meaning to a word list" on="tap:AMP.setState({ stateGlobal: { wlSenseId: 'ID_00029634_03', wotd: 'situation' } }), sidebarWordList.open">
+        <i class="i i-plus" aria-hidden="true"></i>
+        <i class="i i-list-ul" aria-hidden="true"></i>
+    </a>
+    <a amp-access="NOT loggedIn" class="dwla wordlist-add-button" title="Add this meaning to a word list" on="tap:amp-access.login-sign-in" amp-access-hide="">
+        <i class="i i-plus" aria-hidden="true"></i>
+        <i class="i i-list-ul" aria-hidden="true"></i>
+    </a>
+    </div>
+            <div class="ddef_h"><span class="def-info ddef-info">  <span class="lab dlab"><span class="usage dusage lpl-10">formal</span></span></span> <div class="def ddef_d db">the <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/position" title="position" rel="">position</a> of something, <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/especially" title="especially" rel="">especially</a> a <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/town" title="town" rel="">town</a>, <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/building" title="building" rel="">building</a>, etc.</div> </div><div class="def-body ddef_b">  
+                             
+    <span class="trans dtrans dtrans-se  break-cj" lang="zh-Hant">（尤指城鎮、建築物等的）<a class="Ref" href="/dictionary/chinese-traditional-english/%E4%BD%8D%E7%BD%AE"><span class="dtrans">位置</span></a></span>
+        <div class="examp dexamp with-anki-button"> <span class="eg deg">The house's situation in the <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/river" title="river" rel="">river</a> <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/valley" title="valley" rel="">valley</a> is <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/perfect" title="perfect" rel="">perfect</a>.</span>  
+                             
+    <span class="trans dtrans dtrans-se hdb break-cj" lang="zh-Hant">房子在河谷中的位置極佳。</span>
+        <button type="button" class="anki-button"><img src="http://127.0.0.1:5173/src/assets/anki_104026.svg"></button></div> </div></div>     
+                        <div class="daccord"><amp-accordion class="i-amphtml-element i-amphtml-layout-container i-amphtml-built i-amphtml-layout" i-amphtml-layout="container">
+                        <section expanded="">
+                    <header class="ca_h daccord_h i-amphtml-accordion-header" id="3_AMP_header_0" role="button" aria-controls="3_AMP_content_0" aria-expanded="true" tabindex="0">
+                            <i class="i i-plus ca_hi" aria-hidden="true"></i>
+                            <span class="showmore">More examples</span><span class="showless">Fewer examples</span></header><div class="i-amphtml-accordion-content" id="3_AMP_content_0" aria-labelledby="3_AMP_header_0" role="region"><ul class="hul-u hul-u0 ca_b daccord_b lm-0"><li class="eg dexamp hax">Quite <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/frankly" title="frankly" rel="">frankly</a>, I <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/think" title="think" rel="">think</a> this <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/whole" title="whole" rel="">whole</a> situation is <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/ridiculous" title="ridiculous" rel="">ridiculous</a>.</li><li class="eg dexamp hax">It's a <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/difficult" title="difficult" rel="">difficult</a> situation and I don't <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/know" title="know" rel="">know</a> what the <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/answer" title="answer" rel="">answer</a> is.</li><li class="eg dexamp hax">Few <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/journalist" title="journalists" rel="">journalists</a> have <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/manage" title="managed" rel="">managed</a> to <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/convey" title="convey" rel="">convey</a> the <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/full" title="full" rel="">full</a> <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/horror" title="horror" rel="">horror</a> of the situation.</li><li class="eg dexamp hax">I <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/thought" title="thought" rel="">thought</a> he <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/handle" title="handled" rel="">handled</a> the situation very well.</li><li class="eg dexamp hax">The situation has <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/become" title="become" rel="">become</a> <a class="query" href="https://dictionary.cambridge.org/dictionary/english-chinese-traditional/intolerable" title="intolerable" rel="">intolerable</a>.</li></ul></div>
+                        </section>
+                </amp-accordion></div></div>           
+                                    <script type="text/javascript">
+if(typeof iaw !== 'undefined') {
+    iaw.que.push(function() {
+        iaw.setExtraAdSlots(["ad_ringlinkslot"]);
+        iaw.addPageCriteria("cdo_elvl", "B1");
+        iaw.addPageCriteria("cdo_abt", "1");
+    });
+}
+</script>
+<div id="ad_ringlinkslot" data-google-query-id="COjY2MPErYYDFVRTwgUdfbAG8Q" style="display: none;">
+<script type="text/javascript">iaw.cmd.push(function () { iaw.display("ad_ringlinkslot"); });</script>
+<div id="google_ads_iframe_/2863368/ringlinkslot_0__container__" style="border: 0pt none; width: 300px; height: 0px;"></div></div>
+               </div></div></div></div>`);
+
+test('test getting code', () => {
+    const entryBody = new EntryBody(elementWithCode);
+    expect(entryBody.getCode()).toBe('[ C ]');
+});
