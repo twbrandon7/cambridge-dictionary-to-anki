@@ -18,6 +18,10 @@ export default class InformationCollector {
     constructor(protected readonly example: Example) { }
 
     public getCardInformation(): CardInformation {
+        let code = this.example.getParent() instanceof DefinitionBlock ? (this.example.getParent() as DefinitionBlock).getCode() : null;
+        if (code === null) {
+            code = this.example.getParent().getParent().getParent().getCode();
+        }
         return {
             word: this.example.getParent().getParent().getParent().getWord() ?? '',
             partOfSpeech: this.example.getParent().getParent().getParent().getPartOfSpeech() ?? '',
@@ -25,7 +29,7 @@ export default class InformationCollector {
             englishDefinition: this.example.getParent().getEnglishDefinition() ?? '',
             definitionTranslation: this.example.getParent().getZhTwDefinition() ?? '',
             cefrLevel: this.example.getParent() instanceof DefinitionBlock ? (this.example.getParent() as DefinitionBlock).getLevel() : null,
-            code: this.example.getParent() instanceof DefinitionBlock ? (this.example.getParent() as DefinitionBlock).getCode() : null,
+            code: code,
             englishExample: this.example.getEnglishExample(),
             exampleTranslation: this.example.getExampleTranslation(),
         };
