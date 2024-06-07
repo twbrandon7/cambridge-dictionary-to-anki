@@ -2,6 +2,7 @@ import Example from "./example";
 
 export enum EventType {
     OPEN_ANKI_CARD_MODAL = 'OPEN_ANKI_CARD_MODAL',
+    OPEN_CONFIG_MODAL = 'OPEN_CONFIG_MODAL',
 };
 
 export interface Event {
@@ -11,6 +12,10 @@ export interface Event {
 export class OpenAnkiCardModalEvent implements Event {
     eventType: EventType = EventType.OPEN_ANKI_CARD_MODAL;
     constructor(public readonly example: Example) {}
+}
+
+export class OpenConfigModalEvent implements Event {
+    eventType: EventType = EventType.OPEN_CONFIG_MODAL;
 }
 
 export type EventListener = (event: Event) => void;
