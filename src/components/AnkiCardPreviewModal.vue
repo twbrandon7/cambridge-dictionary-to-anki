@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, defineEmits } from 'vue';
+import { ref, onMounted, watch, defineEmits, computed } from 'vue';
 import { Modal } from 'bootstrap';
 import { CardInformation } from '@/lib/information-collector';
 import ClozeSelector from '@/components/partial/ClozeSelector.vue';
@@ -51,6 +51,11 @@ const submit = async () => {
   }
   loading.value = false;
 };
+
+const selectedTokenCounts = ref<number>(0);
+watch(() => tokens.value, (tokens) => {
+  selectedTokenCounts.value = tokens.filter((token) => token.selected).length;
+}, {deep: true});
 </script>
 
 <template>
@@ -92,7 +97,7 @@ const submit = async () => {
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Close
           </button>
-          <button type="button" class="btn btn-primary" @click="submit">Save changes</button>
+          <button type="button" class="btn btn-primary" @click="submit" :disabled="selectedTokenCounts == 0">Save changes</button>
         </div>
       </div>
     </div>
