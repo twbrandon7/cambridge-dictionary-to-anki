@@ -80,3 +80,13 @@ test('test get parent', () => {
     const parser = new PhraseBlock(element, parent);
     expect(parser.getParent()).toBe(parent);
 });
+
+test('test getting phrase title', () => {
+    const parser = new PhraseBlock(element, {} as DsenseBlock);
+    expect(parser.getPhraseTitle()).toBe("the works");
+});
+
+test('test getting phrase info', () => {
+    const parser = new PhraseBlock(element, {} as DsenseBlock);
+    expect(parser.getPhraseInfo()).toBe("informal");
+});
