@@ -6,6 +6,7 @@ export default defineConfig({
     environment: "jsdom",
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "$": "vite-plugin-monkey/dist/client",
     },
   },
 });
