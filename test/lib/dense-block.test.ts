@@ -150,6 +150,7 @@ test('test get phrase blocks from dsense block containing only phrase blocks', (
     const phraseBlocks = denseBlock.getPhraseBlocks();
     expect(phraseBlocks.length).toBe(1);
     expect(phraseBlocks[0].getEnglishDefinition()).toBe('everything that you might want or expect to find in a particular situation');
+    expect(phraseBlocks[0].getPhraseTitle()).toBe('the works');
 });
 
 test('test getting parent', () => {

@@ -16,7 +16,7 @@ export default class DsenseBlock {
 
     public getPhraseBlocks(): PhraseBlock[] {
         const definitionBlocks = this.element.querySelector('.sense-body.dsense_b')?.querySelectorAll(':scope > .phrase-block') ?? [];
-        return Array.from(definitionBlocks).map((definitionBlock: Element) => new DefinitionBlock(definitionBlock as HTMLElement, this));
+        return Array.from(definitionBlocks).map((definitionBlock: Element) => new PhraseBlock(definitionBlock as HTMLElement, this));
     }
 
     public getParent(): EntryBody {
