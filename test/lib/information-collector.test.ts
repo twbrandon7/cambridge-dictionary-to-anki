@@ -55,6 +55,8 @@ test('test getting information from phrase block', () => {
     const phraseBlock = new PhraseBlock(document.createElement('div'), dsenseBlock);
     vi.spyOn(phraseBlock, 'getEnglishDefinition').mockReturnValue('English definition');
     vi.spyOn(phraseBlock, 'getZhTwDefinition').mockReturnValue('zh-tw definition');
+    vi.spyOn(phraseBlock, 'getPhraseTitle').mockReturnValue('phrase title');
+    vi.spyOn(phraseBlock, 'getPhraseInfo').mockReturnValue('phrase info');
     const example = {
         getEnglishExample: () => 'English example',
         getExampleTranslation: () => 'example translation',
@@ -63,13 +65,13 @@ test('test getting information from phrase block', () => {
     const informationCollector = new InformationCollector(example);
     const cardInformation = informationCollector.getCardInformation();
     expect(cardInformation).toEqual({
-        word: 'test',
-        partOfSpeech: 'part of speech',
+        word: 'phrase title',
+        partOfSpeech: 'phrase',
         guideWord: 'guide word',
         englishDefinition: 'English definition',
         definitionTranslation: 'zh-tw definition',
         cefrLevel: null,
-        code: null,
+        code: 'phrase info',
         englishExample: 'English example',
         exampleTranslation: 'example translation',
     });

@@ -1,6 +1,7 @@
 import { CefrLevel } from "./cefr-level";
 import DefinitionBlock from "./definition-block";
 import Example from "./example";
+import PhraseBlock from "./phrase-block";
 
 export interface CardInformation {
     word: string;
@@ -22,9 +23,16 @@ export default class InformationCollector {
         if (code === null) {
             code = this.example.getParent().getParent().getParent().getCode();
         }
+        let word = this.example.getParent().getParent().getParent().getWord() ?? '';
+        let partOfSpeech = this.example.getParent().getParent().getParent().getPartOfSpeech() ?? '';
+        if (this.example.getParent() instanceof PhraseBlock) {
+            word = (this.example.getParent() as PhraseBlock).getPhraseTitle() ?? '';
+            partOfSpeech = 'phrase';
+            code = (this.example.getParent() as PhraseBlock).getPhraseInfo() ?? '';
+        }
         return {
-            word: this.example.getParent().getParent().getParent().getWord() ?? '',
-            partOfSpeech: this.example.getParent().getParent().getParent().getPartOfSpeech() ?? '',
+            word: word,
+            partOfSpeech: partOfSpeech,
             guideWord: this.example.getParent().getParent().getGuideWord() ?? '',
             englishDefinition: this.example.getParent().getEnglishDefinition() ?? '',
             definitionTranslation: this.example.getParent().getZhTwDefinition() ?? '',
