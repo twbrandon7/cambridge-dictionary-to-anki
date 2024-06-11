@@ -5,4 +5,5 @@ export enum CefrLevel {
     B2 = "B2",
     C1 = "C1",
     C2 = "C2",
+    EMPTY = "",
 }
