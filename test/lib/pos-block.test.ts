@@ -1,6 +1,7 @@
 import { expect, test } from 'vitest';
 import EntryBody from '@/lib/entry-body';
 import { createMockElement } from '../test-utils';
+import PosBlock from '@/lib/pos-block';
 
 const element = createMockElement(`<div class="pr entry-body__el"><div class="cid" id="caldcnt-1"></div><div class="pos-header dpos-h"><div class="di-title"><span class="headword hdb tw-bw dhw dpos-h_hw "><span class="hw dhw">work</span></span></div><div class="posgram dpos-g hdib lmr-5"><span class="pos dpos" title="A word that refers to a person, place, idea, event or thing.">noun</span></div> <div></div><span class="uk dpron-i "><span class="region dreg">uk</span><span class="daud">                    
 <audio class="hdn" preload="none" id="audio1" controlslist="nodownload">
@@ -334,17 +335,17 @@ if(typeof iaw !== 'undefined') {
             <div class="item lc lc1 lc-xs6-12 lpb-10 lpr-10" data-position="7"><a href="/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B9%81%E9%AB%94/in-the-works" title="in the works的意思" rel=""><span class="x-h dx-h">in the works</span></a></div></div></div></div></div></div>`);
 
 test('test gettinng word', () => {
-    const entryBody = new EntryBody(element);
+    const entryBody = new PosBlock(element);
     expect(entryBody.getWord()).toBe('work');
 });
 
 test('test getting part of speech', () => {
-    const entryBody = new EntryBody(element);
+    const entryBody = new PosBlock(element);
     expect(entryBody.getPartOfSpeech()).toBe('noun');
 });
 
 test('test getting dsense blocks', () => {
-    const entryBody = new EntryBody(element);
+    const entryBody = new PosBlock(element);
     const dsenseBlocks = entryBody.getDsenseBlocks();
     expect(dsenseBlocks.length).toBe(8);
     expect(dsenseBlocks[0].getGuideWord()).toBe('ACTIVITY');
@@ -480,6 +481,6 @@ if(typeof iaw !== 'undefined') {
                </div></div></div></div>`);
 
 test('test getting code', () => {
-    const entryBody = new EntryBody(elementWithCode);
+    const entryBody = new PosBlock(elementWithCode);
     expect(entryBody.getCode()).toBe('[ C ]');
 });
