@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import AnkiCardPreviewModal from "./components/AnkiCardPreviewModal.vue";
+import PluginConfig from "./components/PluginConfig.vue";
 import Example from "@/lib/example";
 import InformationCollector, { CardInformation } from "./lib/information-collector";
-import EventBus, { EventType, Event, OpenAnkiCardModalEvent } from "./lib/event";
+import EventBus, { EventType, Event, OpenAnkiCardModalEvent, OpenConfigModalEvent } from "./lib/event";
 
 const show = ref<boolean>(false);
+const showConfig = ref<boolean>(false);
 const exampleBlock = ref<Example | null>(null);
 
 const cardInformation = computed<CardInformation | null>(() => {
@@ -16,17 +18,25 @@ const cardInformation = computed<CardInformation | null>(() => {
 });
 
 EventBus.getInstance().subscribe(EventType.OPEN_ANKI_CARD_MODAL, (event: Event) => {
-    if (!(event instanceof OpenAnkiCardModalEvent)) {
-        return;
-    }
-    const example = event.example;
-    exampleBlock.value = example;
-    show.value = true;
+  if (!(event instanceof OpenAnkiCardModalEvent)) {
+    return;
+  }
+  const example = event.example;
+  exampleBlock.value = example;
+  show.value = true;
+});
+
+EventBus.getInstance().subscribe(EventType.OPEN_CONFIG_MODAL, (event: Event) => {
+  if (!(event instanceof OpenConfigModalEvent)) {
+    return;
+  }
+  showConfig.value = true;
 });
 </script>
 
 <template>
   <anki-card-preview-modal v-model:show="show" :info="cardInformation" />
+  <plugin-config v-model:show="showConfig" />
 </template>
 
 <style scoped></style>
