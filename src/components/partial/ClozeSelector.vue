@@ -35,7 +35,7 @@ const emit = defineEmits<{
 
 watch(() => tokens.value, () => {
     emit('update:modelValue', tokens.value.map(token => token.getData()));
-});
+}, { deep: true });
 </script>
 
 <template>
