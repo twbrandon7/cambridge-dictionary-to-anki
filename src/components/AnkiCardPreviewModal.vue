@@ -5,6 +5,7 @@ import { CardInformation } from '@/lib/information-collector';
 import ClozeSelector from '@/components/partial/ClozeSelector.vue';
 import { TokenData } from '@/lib/tokenizer';
 import { createClozeCard } from '@/lib/sync-server-api';
+import { LoginCancelledEvent } from '@/lib/event';
 
 const props = defineProps<{
   show: boolean;
@@ -47,7 +48,9 @@ const submit = async () => {
     await createClozeCard(props.info, tokens.value);
     emit('update:show', false);
   } catch (error: Error | any) {
-    alert('An error occurred: ' + error.message);
+    if (!(error instanceof LoginCancelledEvent)) {
+      alert('An error occurred: ' + error.message);
+    }
   }
   loading.value = false;
 };
