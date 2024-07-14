@@ -8,6 +8,7 @@ import EventBus, {
 } from "./events/event";
 import { AuthToken } from "./jwt-token";
 import { refreshToken as refreshTokenApi } from "./login-api";
+import ConfigStorage from "@/lib/config-storage";
 
 export default class AuthTokenManager {
   protected static instance: AuthTokenManager;
@@ -52,7 +53,7 @@ export default class AuthTokenManager {
     const accessToken = this.getAccessTokenFromStorage();
     const refreshToken = this.getRefreshToken();
     if (refreshToken === null || accessToken === null) {
-      return this.userLogin();
+      return this.interactiveLogin();
     }
     const authToken = new AuthToken(accessToken, refreshToken);
 
@@ -67,10 +68,10 @@ export default class AuthTokenManager {
       return newToken.accessToken;
     }
 
-    return this.userLogin();
+    return this.interactiveLogin();
   }
 
-  protected async userLogin(): Promise<string> {
+  public async interactiveLogin(): Promise<string> {
     const authToken = await AuthTokenManager.askApiKeyAndLogin();
     this.setAccessToken(authToken.accessToken);
     this.setRefreshToken(authToken.refreshToken);
