@@ -1,5 +1,5 @@
 import { expect, test, vi } from "vitest";
-import EventBus, { EventType, OpenAnkiCardModalEvent } from "@/lib/event";
+import EventBus, { EventType, OpenAnkiCardModalEvent } from "@/lib/events/event";
 import Example from "@/lib/example";
 
 test('test subscribe and publish', () => {
