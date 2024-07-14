@@ -52,9 +52,12 @@ const save = async () => {
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Backend URL</label>
-              <input type="input" class="form-control" id="exampleInputEmail1" aria-describedby="backendUrl" v-model="backendUrl">
-              <div id="backendUrl" class="form-text">The backend url to upload cards to AnkiWeb.</div>
+              <label for="backendUrlText" class="form-label">Backend URL</label>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" id="backendUrlText" aria-describedby="button-addon2" v-model="backendUrl">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Login / Test Connection</button>
+              </div>
+              <div class="form-text">The backend url to upload cards to AnkiWeb.</div>
             </div>
           </form>
         </div>
