@@ -43,10 +43,15 @@ export default class TokenExchangeService {
 
   public async healthCheck(accessToken: string): Promise<boolean> {
     const apiUrl = new URL("/api/v1/health", this.endpoint);
-    const response = await fetch(apiUrl.toString(), {
+    let response = null;
+    try {
+      response = await fetch(apiUrl.toString(), {
         method: "GET",
         headers: new Headers({ "x-access-token": accessToken }),
-    });
+      });
+    } catch (e) {
+      return false;
+    }
     return response.ok;
   }
 }

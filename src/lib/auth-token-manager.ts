@@ -40,7 +40,12 @@ export default class AuthTokenManager {
       return authToken.accessToken;
     }
     if (authToken.isRefreshTokenValid()) {
-      const newToken = await exchangeService.refreshToken(authToken.refreshToken);
+      let newToken = null;
+      try {
+        newToken = await exchangeService.refreshToken(authToken.refreshToken);
+      } catch (e) {
+        return null;
+      }
       this.tokenStorage.setAuthToken(newToken)
       return newToken.accessToken;
     }
