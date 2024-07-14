@@ -44,12 +44,21 @@ const save = async () => {
 
 const testConnection = async () => {
   await ConfigStorage.getInstance().set(ConfigStorage.KEY_BACKEND_URL, backendUrl.value);
-  const manager = new AuthTokenManager();
+  const manager = AuthTokenManager.getInstance();
   const token = await manager.tryRefreshingToken();
   if (token !== null) {
     connectionChecked.value = true;
   } else {
-    await manager.interactiveLogin();
+    let error = false;
+    try {
+      await manager.interactiveLogin();
+    } catch (e) {
+      error = true;
+      connectionChecked.value = false;
+    }
+    if (!error) {
+      connectionChecked.value = true;
+    }
   }
 }
 </script>
