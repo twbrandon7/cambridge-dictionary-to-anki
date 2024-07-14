@@ -1,5 +1,5 @@
 import BaseBlock from "./base-block";
-import EventBus, { OpenAnkiCardModalEvent } from "./event";
+import EventBus, { OpenAnkiCardModalEvent } from "./events/event";
 import { filterBoldTextFromElement } from "./parser-util";
 import img from '@/assets/anki_104026.svg';
 

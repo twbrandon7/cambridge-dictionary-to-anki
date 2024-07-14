@@ -5,7 +5,7 @@ import PluginConfig from "./components/PluginConfig.vue";
 import LoginModal from "./components/LoginModal.vue";
 import Example from "@/lib/example";
 import InformationCollector, { CardInformation } from "./lib/information-collector";
-import EventBus, { EventType, Event, OpenAnkiCardModalEvent, OpenConfigModalEvent, OpenLoginModalEvent } from "./lib/event";
+import EventBus, { EventType, Event, OpenAnkiCardModalEvent, OpenConfigModalEvent, OpenLoginModalEvent } from "./lib/events/event";
 
 const show = ref<boolean>(false);
 const showConfig = ref<boolean>(false);

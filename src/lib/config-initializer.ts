@@ -1,5 +1,5 @@
 import img from '@/assets/anki_104026.svg';
-import EventBus, { OpenConfigModalEvent } from "./event";
+import EventBus, { OpenConfigModalEvent } from "./events/event";
 
 export default class ConfigInitializer {
   constructor(protected readonly element: HTMLElement) {}

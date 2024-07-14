@@ -1,12 +1,4 @@
 import ConfigStorage from "./config-storage";
-import EventBus, {
-  OpenLoginModalEvent,
-  EventType,
-  LoginSuccessEvent,
-  LoginFailedEvent,
-  LoginCancelledEvent,
-  Event,
-} from "./event";
 import { AuthToken } from "./jwt-token";
 
 

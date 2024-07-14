@@ -1,5 +1,5 @@
-import Example from "./example";
-import { AuthToken } from "./jwt-token";
+import Example from "../example";
+import { AuthToken } from "../jwt-token";
 
 export enum EventType {
     OPEN_ANKI_CARD_MODAL = 'OPEN_ANKI_CARD_MODAL',

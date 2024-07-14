@@ -5,7 +5,7 @@ import EventBus, {
   LoginSuccessEvent,
   OpenLoginModalEvent,
   Event,
-} from "./event";
+} from "./events/event";
 import { AuthToken } from "./jwt-token";
 import { refreshToken as refreshTokenApi } from "./login-api";
 

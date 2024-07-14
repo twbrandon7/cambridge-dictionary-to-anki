@@ -3,7 +3,7 @@ import { ref, onMounted, watch, defineEmits } from 'vue';
 import { Modal } from 'bootstrap';
 import ConfigStorage from '@/lib/config-storage';
 import { login as loginApi } from '@/lib/login-api';
-import EventBus, { LoginCancelledEvent, LoginFailedEvent, LoginSuccessEvent } from '@/lib/event';
+import EventBus, { LoginCancelledEvent, LoginFailedEvent, LoginSuccessEvent } from '@/lib/events/event';
 
 const props = defineProps<{
   show: boolean;
