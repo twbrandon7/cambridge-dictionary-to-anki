@@ -43,6 +43,8 @@ const save = async () => {
 };
 
 const testConnection = async () => {
+  connectionChecked.value = false;
+
   await ConfigStorage.getInstance().set(ConfigStorage.KEY_BACKEND_URL, backendUrl.value);
   const manager = AuthTokenManager.getInstance();
   const token = await manager.tryRefreshingToken();
@@ -76,7 +78,12 @@ const testConnection = async () => {
             <div class="mb-3">
               <label for="backendUrlText" class="form-label">Backend URL</label>
               <div class="input-group mb-3">
-                <input type="text" :class="{'form-control': true, 'is-valid': connectionChecked}" id="backendUrlText" aria-describedby="button-addon2" v-model="backendUrl">
+                <input type="text"
+                       :class="{'form-control': true, 'is-valid': connectionChecked}"
+                       id="backendUrlText"
+                       aria-describedby="button-addon2"
+                       v-model="backendUrl"
+                       @input="() => connectionChecked = false">
                 <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="testConnection">Login / Test Connection</button>
               </div>
               <div class="form-text">The backend url to upload cards to AnkiWeb.</div>
