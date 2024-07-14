@@ -7,11 +7,13 @@ import EventBus, {
   Event,
 } from "./events/event";
 import { AuthToken } from "./jwt-token";
-import { refreshToken as refreshTokenApi } from "./login-api";
+import TokenExchangeService from "@/lib/services/token-exchange-service";
+import TokenStorage from "@/lib/services/token-storage";
 import ConfigStorage from "@/lib/config-storage";
 
 export default class AuthTokenManager {
   protected static instance: AuthTokenManager;
+  protected tokenStorage: TokenStorage = TokenStorage.getInstance();
 
   public static getInstance(): AuthTokenManager {
     if (!AuthTokenManager.instance) {
@@ -20,52 +22,35 @@ export default class AuthTokenManager {
     return AuthTokenManager.instance;
   }
 
-  private accessToken: string | null = null;
-  private refreshToken: string | null = null;
-
-  private constructor() {}
-
-  protected setRefreshToken(refreshToken: string): void {
-    this.refreshToken = refreshToken;
-    window.localStorage.setItem("refreshToken", refreshToken);
+  protected async getExchangeService(): Promise<TokenExchangeService> {
+    const endpoint = await ConfigStorage.getInstance().get<string>(
+        ConfigStorage.KEY_BACKEND_URL
+    );
+    return new TokenExchangeService(endpoint);
   }
 
-  protected getRefreshToken(): string | null {
-    if (this.refreshToken === null) {
-      this.refreshToken = window.localStorage.getItem("refreshToken");
+  /**
+   * Try to refresh token. If success or token already not expired, return a valid access token. If failed to
+   * refresh token, return null;
+   */
+  public async tryRefreshingToken(): Promise<string | null> {
+    const exchangeService = await this.getExchangeService();
+    const authToken = this.tokenStorage.getAuthToken();
+    if (authToken.isAccessTokenValid() && await exchangeService.healthCheck(authToken.accessToken)) {
+      return authToken.accessToken;
     }
-    return this.refreshToken;
-  }
-
-  protected setAccessToken(accessToken: string): void {
-    this.accessToken = accessToken;
-    window.localStorage.setItem("accessToken", accessToken);
-  }
-
-  protected getAccessTokenFromStorage(): string | null {
-    if (this.accessToken === null) {
-      this.accessToken = window.localStorage.getItem("accessToken");
+    if (authToken.isRefreshTokenValid()) {
+      const newToken = await exchangeService.refreshToken(authToken.refreshToken);
+      this.tokenStorage.setAuthToken(newToken)
+      return newToken.accessToken;
     }
-    return this.accessToken;
+    return null;
   }
 
   public async getAccessToken(): Promise<string> {
-    const accessToken = this.getAccessTokenFromStorage();
-    const refreshToken = this.getRefreshToken();
-    if (refreshToken === null || accessToken === null) {
-      return this.interactiveLogin();
-    }
-    const authToken = new AuthToken(accessToken, refreshToken);
-
-    if (authToken.isAccessTokenValid()) {
+    const accessToken = await this.tryRefreshingToken();
+    if (accessToken !== null) {
       return accessToken;
-    }
-
-    if (authToken.isRefreshTokenValid()) {
-      const newToken = await refreshTokenApi(refreshToken);
-      this.setAccessToken(newToken.accessToken);
-      this.setRefreshToken(newToken.refreshToken);
-      return newToken.accessToken;
     }
 
     return this.interactiveLogin();
@@ -73,8 +58,7 @@ export default class AuthTokenManager {
 
   public async interactiveLogin(): Promise<string> {
     const authToken = await AuthTokenManager.askApiKeyAndLogin();
-    this.setAccessToken(authToken.accessToken);
-    this.setRefreshToken(authToken.refreshToken);
+    this.tokenStorage.setAuthToken(newToken)
     return authToken.accessToken;
   }
 

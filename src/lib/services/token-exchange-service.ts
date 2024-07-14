@@ -41,15 +41,12 @@ export default class TokenExchangeService {
     return new AuthToken(data.accessToken, data.refreshToken);
   }
 
-  public async healthCheck(accessToken: string) {
+  public async healthCheck(accessToken: string): Promise<boolean> {
     const apiUrl = new URL("/api/v1/health", this.endpoint);
     const response = await fetch(apiUrl.toString(), {
         method: "GET",
         headers: new Headers({ "x-access-token": accessToken }),
     });
-    if (!response.ok) {
-      throw new Error("An error occurred while sending the request.");
-    }
-    return response.json();
+    return response.ok;
   }
 }

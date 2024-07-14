@@ -15,6 +15,7 @@ const emit = defineEmits<{
 const modal = ref<HTMLElement | null>(null);
 const modalObject = ref<Modal | null>(null);
 const backendUrl = ref<string>('');
+const connectionChecked = ref<boolean>(false);
 
 onMounted(async () => {
   const modalElement = modal.value;
@@ -44,7 +45,12 @@ const save = async () => {
 const testConnection = async () => {
   await ConfigStorage.getInstance().set(ConfigStorage.KEY_BACKEND_URL, backendUrl.value);
   const manager = new AuthTokenManager();
-  await manager.interactiveLogin();
+  const token = await manager.tryRefreshingToken();
+  if (token !== null) {
+    connectionChecked.value = true;
+  } else {
+    await manager.interactiveLogin();
+  }
 }
 </script>
 
@@ -61,7 +67,7 @@ const testConnection = async () => {
             <div class="mb-3">
               <label for="backendUrlText" class="form-label">Backend URL</label>
               <div class="input-group mb-3">
-                <input type="text" class="form-control" id="backendUrlText" aria-describedby="button-addon2" v-model="backendUrl">
+                <input type="text" :class="{'form-control': true, 'is-valid': connectionChecked}" id="backendUrlText" aria-describedby="button-addon2" v-model="backendUrl">
                 <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="testConnection">Login / Test Connection</button>
               </div>
               <div class="form-text">The backend url to upload cards to AnkiWeb.</div>
