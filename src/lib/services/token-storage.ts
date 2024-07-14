@@ -43,6 +43,6 @@ export default class TokenStorage {
     }
 
     public getAuthToken(): AuthToken {
-        return new AuthToken(this.getAccessToken(), this.getRefreshToken());
+        return new AuthToken(this.getAccessToken() ?? '', this.getRefreshToken() ?? '');
     }
 }
