@@ -15,6 +15,9 @@ export default class AuthTokenManager {
   protected static instance: AuthTokenManager;
   protected tokenStorage: TokenStorage = TokenStorage.getInstance();
 
+  private constructor() {
+  }
+
   public static getInstance(): AuthTokenManager {
     if (!AuthTokenManager.instance) {
       AuthTokenManager.instance = new AuthTokenManager();
@@ -63,7 +66,7 @@ export default class AuthTokenManager {
 
   public async interactiveLogin(): Promise<string> {
     const authToken = await AuthTokenManager.askApiKeyAndLogin();
-    this.tokenStorage.setAuthToken(newToken)
+    this.tokenStorage.setAuthToken(authToken)
     return authToken.accessToken;
   }
 
