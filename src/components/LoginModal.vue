@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, defineEmits } from 'vue';
 import { Modal } from 'bootstrap';
-import ConfigStorage from '@/lib/config-storage';
 import { login as loginApi } from '@/lib/login-api';
 import EventBus, { LoginCancelledEvent, LoginFailedEvent, LoginSuccessEvent } from '@/lib/events/event';
+import '@/style/loading.scss';
 
 const props = defineProps<{
   show: boolean;
@@ -16,6 +16,7 @@ const emit = defineEmits<{
 const modal = ref<HTMLElement | null>(null);
 const modalObject = ref<Modal | null>(null);
 const apiKey = ref<string>('');
+const loading = ref<boolean>(false);
 
 onMounted(async () => {
   const modalElement = modal.value;
@@ -36,6 +37,7 @@ watch(() => props.show, (show) => {
 });
 
 const login = async () => {
+  loading.value = true;
   let authToken = null;
   try {
     authToken = await loginApi(apiKey.value);
@@ -43,6 +45,8 @@ const login = async () => {
     alert('Login failed: ' + error.message);
     EventBus.getInstance().publish(new LoginFailedEvent(error.message))
     return;
+  } finally {
+    loading.value = false;
   }
   if (authToken === null) {
     alert('Login failed');
@@ -62,7 +66,12 @@ const cancel = () => {
 <template>
   <div class="modal" tabindex="-1" ref="modal">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+      <div class="modal-content loading-wrapper">
+        <div class="loading" v-show="loading">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
         <div class="modal-header">
           <h5 class="modal-title">Login</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

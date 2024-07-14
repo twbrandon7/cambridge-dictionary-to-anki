@@ -6,6 +6,7 @@ import ClozeSelector from '@/components/partial/ClozeSelector.vue';
 import { TokenData } from '@/lib/tokenizer';
 import { createClozeCard } from '@/lib/sync-server-api';
 import { LoginCancelledEvent } from '@/lib/events/event';
+import '@/style/loading.scss';
 
 const props = defineProps<{
   show: boolean;
@@ -205,24 +206,5 @@ watch(() => tokens.value, (tokens) => {
 .tag-container {
   display: flex;
   gap: 5px;
-}
-
-.loading-wrapper {
-  position: relative;
-}
-
-.loading {
-  z-index: 10;
-  background-color: rgba(255, 255, 255, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
 </style>
